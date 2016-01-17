@@ -1,0 +1,4 @@
+---
+
+- src: git+git@github.com:geerlingguy/ansible-role-php.git
+  name: geerlingguy.php

@@ -1,3 +1,13 @@
+# Composer
 composer.phar
 composer.lock
 vendor/
+
+# Ansible
+ansible/vendor/
+
+# Vagrant
+.vagrant/
+
+# Nohup
+public/nohup.out

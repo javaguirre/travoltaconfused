@@ -1,0 +1,17 @@
+---
+
+- name: Travolta confused
+  hosts: all
+  remote_user: vagrant
+  become: yes
+
+  vars:
+    php_upload_max_filesize: "2M"
+    php_packages:
+      - php5
+      - php5-gd
+      - php5-imagick
+
+  roles:
+    - geerlingguy.php
+    - travolta

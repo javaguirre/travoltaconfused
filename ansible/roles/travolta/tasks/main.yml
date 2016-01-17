@@ -1,0 +1,21 @@
+---
+
+- name: Install composer.
+  get_url: |
+    url=https://getcomposer.org/composer.phar
+    dest={{ travolta_composer_path }}
+    mode=0755
+    validate_certs=no
+
+- name: Update composer if already exists.
+  shell: "{{ travolta_composer_path }}/composer.phar self-update"
+
+- name: Run composer install
+  shell: 'php {{ travolta_composer_path }}/composer.phar install'
+  args:
+    chdir: '{{ travolta_project_path }}'
+
+- name: Run PHP server
+  shell: 'nohup php -S 0.0.0.0:8080 &'
+  args:
+    chdir: '{{ travolta_project_path }}/public'

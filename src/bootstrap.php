@@ -11,6 +11,11 @@ $app->get('/', function () {
     include_once(TEMPLATES_DIR."/home.php");
 });
 
+$app->get('/travolten', function () {
+    echo 'Gaten';
+    \Travolta\Travolta::travolten();
+});
+
 $app->post('/img/upload', function () use ($app) {
     // initialize variables
     $travolta_gif = sprintf("%s/src/_resource/travolta.gif", ROOT_DIR);

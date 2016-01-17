@@ -2,6 +2,7 @@
 namespace Travolta;
 
 use PHPImageWorkshop\ImageWorkshop;
+use Imagine;
 
 class Travolta {
     const WIDTH = 216; // min width
@@ -88,6 +89,25 @@ class Travolta {
         $files = array_keys($files);
 
         return ($files) ? $files : false;
+    }
+
+    public static function travolten()
+    {
+        $imagine = new Imagine\Imagick\Imagine();
+        $background = '../src/myphoto.jpg';
+        $size = new Imagine\Image\Box(210, 216);
+        $travolta = $imagine->open('../src/_resource/travolta.gif');
+        $point = new Imagine\Image\Point($size->getWidth()/2, $size->getHeight()/2);
+
+        $mode = Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
+
+        $backgroundResized = $imagine
+            ->open($background)
+            // ->thumbnail($size, $mode)
+            ->paste($travolta, $point)
+            ->save('final.gif', array('flatten' => false));
+
+        // TODO: delete background tmp
     }
 }
 ?>
